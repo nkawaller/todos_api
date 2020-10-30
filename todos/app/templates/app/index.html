@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Todo App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script> -->
+</head>
+<body>
+    <div id="app">
+        <div class="parent">
+            <div class="title">
+                <h1>[[ heading ]]</h1>
+                <form @submit.prevent="addNote" name="input_form">
+                    <input v-model="item" placeholder="New note" id="input_field"><button class="btn btn-outline-dark btn-md">Add</button>
+                </form>
+            </div>
+        </div>
+        <div class="notes">
+            <ul class="note_list">
+                <li  
+                    v-for="note in info"
+                    :key="note.id"
+                    contenteditable="true"
+                    @keydown.enter="updateTask($event, note.id)"
+                    v-bind:class="{'is_complete':note.completed}"
+                    ><input v-model='note.completed' type="checkbox" @change="markComplete(note.id)">
+                    <span>[[ note.note ]]</span>
+                    <button id="x" type="button" class="btn btn-danger btn-sm" @click="deleteNote(note.id)">x</button>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+    
+    <script src="{% static 'app/main.js' %}"></script>
+</body>
+</html>

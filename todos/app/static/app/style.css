@@ -1,0 +1,30 @@
+/*----- Styles ----- */
+
+.parent {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+.notes {
+    display: flex;
+    /* text-align: center; */
+    justify-content: center;
+    align-items: center;
+    /* margin-top: -150px; */
+
+}
+
+.note_list {
+    list-style-type: none;
+}
+
+.is_complete {
+    text-decoration: line-through;
+}
+
+#x {
+    margin: 15px;
+}
